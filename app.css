@@ -114,7 +114,7 @@ body {
 }
 
 .context_color_input {
-    background-image: url("/assets/images/background.png");
+    background-image: url("./assets/images/background.png");
 }
 
 input[type="color"] {
@@ -263,7 +263,7 @@ input[type="color"] {
     height: 8vw;
     border: 2px solid #c6c2c2;
     background-size: 100%;
-    background: url('/assets/images/background.png') repeat;
+    background: url('./assets/images/background.png') repeat;
 }
 
 .active, .active_size {
@@ -304,7 +304,7 @@ input[type="color"] {
     width: 512px;
     height: 512px;
     margin: auto;
-    background: url('/assets/images/background.png') repeat;
+    background: url('./assets/images/background.png') repeat;
 }
 
 
@@ -319,7 +319,7 @@ input[type="color"] {
     height: 200px;
     margin: 20px auto;
     border: 1px solid #c6c2c2;
-    background: url('/assets/images/background.png');
+    background: url('./assets/images/background.png');
 }
 
 .fps_container {
@@ -393,13 +393,13 @@ input[type="color"] {
 }
 
 .copy_frame {
-    background-image: url('/assets/frame_icons/copy-icon.svg');
+    background-image: url('./assets/frame_icons/copy-icon.svg');
     bottom: 0;
     right: 0;
 }
 
 .expand_frame {
-    background-image: url('/assets/frame_icons/expand-icon.svg');
+    background-image: url('./assets/frame_icons/expand-icon.svg');
     bottom: 0;
     left: 0;
 }
