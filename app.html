@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Piskel Clone</title>
+     <link rel="SHORTCUT ICON" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link href="/app.css" rel="stylesheet">
+    <script src="./bundle.js" async></script>
+</head>
+<h1 class="header">Piskel Clone</h1>
+<div class="root">
+    <div class="tools">
+        <div class="pen_size_tool">
+            <p class="select_pen_size_text">
+                Select pen size
+            </p>
+            <div class="select_pen_size" id="select_pen_size">
+                <div class="pen_size pen1 active_size" id="pen1" data-title="size 1px" data-size="1"></div>
+                <div class="pen_size pen2" id="pen2" data-title="size 2px" data-size="2"></div>
+                <div class="pen_size pen3" id="pen3" data-title="size 3px" data-size="3"></div>
+                <div class="pen_size pen4" id="pen4" data-title="size 4px" data-size="4"></div>
+            </div>
+        </div>
+        <div class="tools_container">
+            <div class="icon_container" id="pen_tool" data-title="Pen tool (P)">
+                <img src="assets/tool_icons/pen_tool_icon.svg" alt="pen_tool_icon" class="icon_image">
+            </div>
+            <div class="icon_container"  id="paint_bucket_tool" data-title="Paint bucket tool (B)">
+                <img src="assets/tool_icons/paint_bucket_icon.svg" alt="paint_bucket_tool_icon" class="icon_image">
+            </div>
+            <div class="icon_container" id="color_picker_tool" data-title="Color picker (O)">
+                <img src="./assets/tool_icons/color_picker_icon.svg" alt="color_picker_tool_icon" class="icon_image">
+            </div>
+            <div class="icon_container"  id="eraser_tool" data-title="Eraser tool (E)">
+                <img src="assets/tool_icons/eraser_icon.svg" alt="eraser_tool_icon" class="icon_image">
+            </div>
+            <div class="icon_container" id="stroke_rectangle_tool" data-title="Stroke Rectangle tool (R)">
+                <img src="assets/tool_icons/stroke_rectangle_icon.svg" alt="stroke_rectangle_tool_icon" class="icon_image">
+            </div>
+            <div class="icon_container"  id="fill_rectangle_tool" data-title="Fill Rectangle tool (F)">
+                <img src="assets/tool_icons/fill_rectangle_icon.svg" alt="fill_rectangle_tool_icon" class="icon_image">
+            </div>
+        </div>
+        <div class="select_color" id="color_container">
+            <div class="primary_color">
+                <input type="color" class="primary_color_input" id="primary_color_input">
+            </div>
+            <div class="context_color">
+                <input type="color" class="context_color_input">
+            </div>
+        </div>
+        <button class="dialog_button" id="dialog_button">
+            <img src="/assets/images/keyboard.svg" alt="keyboard_icon" class="keyboard_image">
+        </button>
+        <dialog id="dialog_window" class="dialog_window">
+            <div class="dialog_content">
+                <button id="close_dialog_button" class="close_dialog_button">
+                    <img src="/assets/images/close-cross.svg" alt="close_icon" class="close_image_button">
+                </button>
+                <h2 class="dialog_header">Keyboard shotcuts</h2>
+                <table class="key_table">
+                    <thead class="key_table_head">
+                        <tr>
+                            <th>Keys</th>
+                            <th>Arrows</th>
+                            <th>Numpad</th>
+                        </tr>
+                    </thead>
+                    <tbody class="key_table_body">
+                        <tr>
+                            <td>P - Pencil Tool</td>
+                            <td>Up/Down - Select Canvas Size</td>
+                            <td>Plus - Add New Frame</td>
+                        </tr>
+                        <tr>
+                            <td>B - Paint Bucket Tool</td>
+                            <td>Left/Right - Change Animation Speed</td>
+                            <td><u><b>Select Pen Size:</b></u></td>
+                        </tr>
+                        <tr>
+                            <td>C - Color Picker Tool</td>
+                            <td></td>
+                            <td>1 - 1 unit Pen Size</td>
+                        </tr>
+                        <tr>
+                            <td>E - Eraser Tool</td>
+                            <td></td>
+                            <td>2 - 2 units Pen Size</td>
+                        </tr>
+                        <tr>
+                            <td>R - Stroke Rectangle Tool</td>
+                            <td></td>
+                            <td>3 - 3 units Pen Size</td>
+                        </tr>
+                        <tr>
+                            <td>F - Fill Rectangle Tool</td>
+                            <td></td>
+                            <td>4 - 4 units Pen Size</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Enter - Open Full Screen Window</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>0 - Export image</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </dialog>
+    </div>
+    <div id="frames" class="frames">
+        <button class="button_add_frame" id="button_add_frame">
+            <img src="./assets/images/plus-symbol.svg" alt="plus_symbol" class="plus_icon">
+            Add new frame
+        </button>
+    </div>
+    <div class="draw_canvas_container" id="draw_canvas_container">
+        <canvas id="draw_canvas" class="draw_canvas" width="32px" height="32px"></canvas>
+    </div>
+    <div class="animation_field" id="animation_field">
+        <canvas id="animation_canvas" class="animation_canvas"></canvas>
+        <div class="fps_container">
+            <label for="range" class="range_label">
+                <span class="current_range"></span>
+                <span class="fps_span">FPS</span>
+            </label>
+            <input type="range" class="input_range" id="range" name="fps" min="1" max="24" step="1">
+        </div>
+        <div class="full_export_button_container">
+            <button class="full_screen_button" id="full_screen_button">Full Screen</button>
+            <button class="export_button" id="export_button">Export image</button>
+        </div>
+
+        <div class="view_container">
+            <div class="select_canvas_size_container">
+                <p class="select_canvas_size">
+                    Select canvas size
+                </p>
+                <div class="scale_canvas_container" id="scale_canvas_container">
+                    <button class="scale_canvas_button active_button" data-canvassize="32">32/32</button>
+                    <button class="scale_canvas_button" data-canvassize="64">64/64</button>
+                    <button class="scale_canvas_button" data-canvassize="128">128/128</button>
+                </div>
+            </div>
+            <div class="information_container" id="information_container">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
